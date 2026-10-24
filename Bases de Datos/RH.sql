@@ -361,10 +361,10 @@ ROLLBACK TO update_done;
 
 COMMIT;
 
-SELECT * FROM DEPT;
-DELETE FROM DEPT;
+SELECT * FROM HR.DEPT;
+DELETE FROM HR.DEPT;
 COMMIT;
-INSERT INTO DEPT VALUES (1, 'A', 100, 1000, SYSDATE);
+INSERT INTO HR.DEPT VALUES (1, 'A', 100, 1000, SYSDATE);
 ROLLBACK;
 
 INSERT INTO DEPT VALUES (1, 'A', 100, 1000, SYSDATE);
@@ -397,7 +397,7 @@ Implicit Transaction Processing
  ? All savepoints are erased.
 
 3: State of the Data After ROLLBACK
- ? Discard all pending changes by using the ROLLBACK statement:
+ ? Discard all pend ing changes by using the ROLLBACK statement:
  ? Data changes are undone.
  ? Previous state of the data is restored.
  ? Locks on the affected rows are released.
@@ -430,6 +430,8 @@ SELECT * FROM COPY_EMP;
 DROP TABLE COPY_EMP;
 CREATE TABLE COPY_EMP AS SELECT * FROM HR.EMPLOYEES;
 ROLLBACK;
+SELECT * FROM HR.DEPT;
+
 
 
 FOR UPDATE Clause in a SELECT Statement
